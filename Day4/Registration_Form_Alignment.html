@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+
+<body>
+    <h2>REGISTRATION FORM</h2>
+    <table>
+        <tbody>
+            <form action="#" method="post">
+                <tr>
+                    <div>
+                        <td>Name</td>
+                        <td><input type="text" name="name" placeholder="Enter Name" autocomplete="off"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>Email</td>
+                        <td><input type="email" name="email" placeholder="Enter email " autocomplete="off"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>Password</td>
+                        <td><input type="password" name="pass" placeholder="Enter Password"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>Birth Date</td>
+                        <td><input type="date" name="dob"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>Gender</td>
+                        <td><input type="radio" name="gender" value="M"> MALE
+                            <input type="radio" name="gender" value="F"> FEMALE
+                        </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>Skills</td>
+                        <td><input type="checkbox" name="skills" value="Javascript">Javascript
+                            <input type="checkbox" name="skills" value="HTML">HTML
+                            <input type="checkbox" name="skills" value="C++">CSS
+                            <input type="checkbox" name="skills" value="CSS">Java
+                        </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>Qualification</td>
+                        <td><select name="qualification">
+                                <option>Select</option>
+                                <optgroup label="Graduation">
+                                    <option value="BTech">B.Tech</option>
+                                    <option value="BSC">B.Sc</option>
+                                    <option value="BCOM">B.Com</option>
+                                    <option value="BCA">BCA</option>
+                                </optgroup>
+                                <optgroup label="Post Graduation">
+                                    <option value="MCA">MCA</option>
+                                    <option value="MBA">MBA</option>
+                                    <option value="MTech">M.Tech</option>
+                                </optgroup>
+                            </select>
+                        </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>Address</td>
+                        <td><textarea name="address" rows="6" cols="35"></textarea></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>Upload Picture</td>
+                        <td><input type="file" name="pic"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><input type="submit" value="Register"></td>
+                        <td><input type="reset" value="Reset"></td>
+                    </div>
+                </tr>
+            </form>
+        </tbody>
+    </table>
+</body>
+
+</html>
