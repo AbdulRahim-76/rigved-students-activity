@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Largest & Smallest Number</h1>
+    <h2>from Array Element - [10, -3, 50, -2, 70, 40, 60]</h2>
+    <script type="text/javascript">
+        var arr = [10, -3, 50, -2, 70, 40, 60];
+        var large = arr[0];
+        var small = arr[0];
+        for (i = 0; i < arr.length; i++) {
+            if (arr[i] >= large) {
+                larg = arr[i];
+            }
+        }
+        for (i = 0; i <= arr.length; i++) {
+            if (arr[i] <= small) {
+                small = arr[i];
+            }
+        }
+        document.write("<b>Largest Number from an array element is: </b>" + large + "</br>");
+        document.write("<b>Smallest Number from an array element is: </b>" + small);
+
+    </script>
+</body>
+
+</html>
