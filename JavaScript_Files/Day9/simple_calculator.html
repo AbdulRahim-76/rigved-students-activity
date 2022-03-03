@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style type="text/css">
+        div {
+            background-color: azure;
+            text-align: center;
+            border: solid black 2px;
+            width: 500px;
+            height: 250px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+
+        <h2>Simple Calculator</h2>
+
+        <label>
+            Enter First Number :
+        </label>
+        <br>
+        <input type="number" id="fn" name="first">
+        <br>
+        <label>
+            Enter Second Number :
+        </label>
+        <br>
+        <input type="number" id="sn" name="second">
+        <br>
+        <label>
+            Result :
+        </label>
+        <br>
+        <input type="number" id="res" name="result">
+        <br>
+        <br>
+
+        <button onclick="add()">Addition</button>
+        <button onclick="subtract()">Subtraction</button>
+        <button onclick="multiply()">Multiplication</button>
+        <button onclick="divide()">Division</button>
+
+    </div>
+
+    <script>
+        function add() {
+            var x = parseInt(document.getElementById("fn").value);
+            var y = parseInt(document.getElementById("sn").value);
+            var z = x + y;
+            document.getElementById("res").value = z;
+        }
+        function subtract() {
+            var x = parseInt(document.getElementById("fn").value);
+            var y = parseInt(document.getElementById("sn").value);
+            var z = x - y;
+            document.getElementById("res").value = z;
+        }
+        function multiply() {
+            var x = parseInt(document.getElementById("fn").value);
+            var y = parseInt(document.getElementById("sn").value);
+            var z = x * y;
+            document.getElementById("res").value = z;
+        }
+        function divide() {
+            var x = parseInt(document.getElementById("fn").value);
+            var y = parseInt(document.getElementById("sn").value);
+            var z = x / y;
+            document.getElementById("res").value = z;
+        }
+    </script>
+
+</body>
+
+</html>

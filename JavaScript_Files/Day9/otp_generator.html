@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Generator</title>
+
+    <style type="text/css">
+        div {
+            background-color: azure;
+            text-align: center;
+            border: solid black 2px;
+            width: 500px;
+            height: 150px;
+            margin: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div>
+
+        <h1> OTP Generator </h1>
+
+        <script>
+
+            var n = prompt("Enter a number to get OTP");
+
+            function generateOTP() {
+
+                if (n == 4) {
+                    var otp = get4digit();
+                    return otp;
+                }
+                if (n == 6) {
+                    var otp = get6digit();
+                    return otp;
+                }
+
+                if (n != 4 && n != 6) {
+                    alert("Invalid Number! Please enter the number 4 or 6 only.");
+                    return false;
+                }
+
+                return Otp;
+            }
+
+            document.write("OTP of " + n + " digits : " + generateOTP());
+
+            function get4digit() {
+                var code = Math.round(Math.random() * 1000000);
+                var codeStr = code + "";
+
+                if (codeStr.length == 4) {
+                    return codeStr;
+                } else {
+                    return get4digit();
+                }
+
+            }
+
+            function get6digit() {
+                var code = Math.round(Math.random() * 1000000);
+                var codeStr = code + "";
+
+                if (codeStr.length == 6) {
+                    return codeStr;
+                } else {
+                    return get6digit();
+                }
+
+            }
+
+        </script>
+    </div>
+</body>
+
+</html>
