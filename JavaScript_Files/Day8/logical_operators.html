@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical Operators</title>
+</head>
+<body>
+    <h1></h1>
+    <script type="text/javascript">
+        var phy=parseInt(prompt("Enter your physics marks: "));
+        var chem=parseInt(prompt("Enter your chemistry marks: "));
+        var math=parseInt(prompt("Enter your maths marks: "));
+        var avg=(phy+chem+math)/3;
+       
+        if(avg>=70){
+            document.write("<p>The result is : Grade A+");
+        }
+        else if(avg<70 && avg>=60){
+            document.write("<p>The result is : Grade A");
+        }
+        else if(avg<60 && avg>=50){
+            document.write("<p>The result is : Grade B");
+        }
+        else if(avg<50 && avg>=35){
+            document.write("<p>The result is : Grade C");
+        } 
+        else{
+            document.write("<p>The result is : Failed");
+        }
+     
+    </script>
+</body>
+</html>

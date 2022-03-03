@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form Validation</title>
+</head>
+
+<body>
+    <h2>Registration Form</h2>
+    <hr />
+    <table>
+        <tbody>
+
+            <form name="reg" action="logical_operators.html" method="post" onsubmit="return validateRegistration()">
+                <tr>
+                    <div>
+                        <td>First Name</td>
+                        <td><input type="text" name="fn" placeholder="Enter Name" autocomplete="off"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>Last Name</td>
+                        <td><input type="text" name="ln" placeholder="Enter Last Name" autocomplete="off"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>Password</td>
+                        <td><input type="password" name="pass" placeholder="Enter Password"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>Confirm Password</td>
+                        <td><input type="password" name="cpass"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>Gender</td>
+                        <td><input type="radio" name="gen" value="M"> MALE
+                            <input type="radio" name="gen" value="F"> FEMALE
+                        </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>Skills</td>
+                        <td><input type="checkbox" name="skill" value="Javascript">Javascript
+                            <input type="checkbox" name="skill" value="HTML">HTML
+                            <input type="checkbox" name="skill" value="C++">CSS
+                            <input type="checkbox" name="skill" value="CSS">Java
+                        </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td>
+                            <input type="submit" value="Submit">
+                            <input type="reset" value="Reset">
+                        </td>
+                    </div>
+                </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript" src="formScript.js"></script>
+</body>
+
+</html>
