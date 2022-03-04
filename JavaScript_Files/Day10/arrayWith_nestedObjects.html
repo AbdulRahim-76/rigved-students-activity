@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array With Nested Objects</title>
+
+    <style>
+        body {
+            background-color: powderblue;
+        }
+
+        table {
+            background-color: aliceblue;
+            text-align: center;
+            border: solid black 2px;
+            border-radius: 5px;
+            width: 60%;
+            margin: auto;
+        }
+
+        th,
+        td {
+            text-align: center;
+            padding: 22px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align: center;">Test Match Captains (2008-2022*)</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Player Id</th>
+                <th>Full Name</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Year</th>
+                <th>Played</th>
+            </tr>
+        </thead>
+        <tbody id="tbData"></tbody>
+    </table>
+
+    <h2 style="text-align: center;">Javascript Day10 - Array with Nested Objects</h2>
+
+    <script>
+        var record = [
+            {
+                playerId: 7,
+                firstName: "Mahendra Singh",
+                lastName: "Dhoni",
+                address: { state: "Jharkhand", city: "Ranchi" },
+                year: "2008-2014",
+                played: 60
+            },
+            {
+                playerId: 18,
+                firstName: "Virat",
+                lastName: "Kohli",
+                address: { state: "Delhi", city: "New Delhi" },
+                year: "2014-2022",
+                played: 68
+            },
+            {
+                playerId: 3,
+                firstName: "Ajinkya",
+                lastName: "Rahane",
+                address: { state: "Maharashtra", city: "Mumbai" },
+                year: "2017-2021",
+                played: 6
+            },
+            {
+                playerId: 01,
+                firstName: "KL",
+                lastName: "Rahul",
+                address: { state: "Karnataka", city: "Bangalore" },
+                year: "2021-2022",
+                played: 1
+            },
+
+            {
+                playerId: 45,
+                firstName: "Rohit",
+                lastName: "Sharma",
+                address: { state: "Maharashtra", city: "Mumbai" },
+                year: "2022-present*",
+                played: "1*"
+            }
+
+        ];
+
+        var table = "<tbody>";
+        for (i = 0; i < record.length; i++) {
+            table += "<tr>";
+            table += "<td>" + record[i].playerId + "</td>";
+            table += "<td>" + record[i].firstName + " " + record[i].lastName + "</td>";
+            table += "<td>" + record[i].address.state + "</td>";
+            table += "<td>" + record[i].address.city + "</td>";
+            table += "<td>" + record[i].year + "</td>";
+            table += "<td>" + record[i].played + "</td>";
+            table += "</tr>";
+        }
+        table += "</tbody>";
+        document.getElementById("tbData").innerHTML = table;
+    </script>
+</body>
+
+</html>
