@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color:lightgray;
+        }
+
+        #c2 {
+            margin: auto;
+            position: relative;
+            top: -500px;
+            left: 600px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h1>Chess Board</h1>
+        <canvas id="c1" width="560px" height="560px" style="border: solid 2px black"></canvas>
+    </div>
+    <div>
+        <h1 style="text-align: right;">Rainbow</h1>
+        <canvas id="c2"></canvas>
+    </div>
+    <script>
+
+        // Chess Board
+
+        function chessBoard() {
+
+            var chess = document.getElementById("c1");
+            context = chess.getContext("2d");
+            var origin_x = 0;
+            var origin_y = 0;
+            var square = 70;
+
+            for (i = 0; i < 8; i++) {
+
+                for (j = 0; j < 8; j++) {
+
+                    if ((i + j) % 2 == 0) {
+                        context.fillStyle = "black";
+                    } else {
+                        context.fillStyle = "white";
+                    }
+
+                    var x_axis = origin_x + j * square;
+                    var y_axis = origin_y + i * square;
+                    context.fillRect(x_axis, y_axis, square, square);
+                }
+            }
+
+        }
+
+        document.getElementById("c1").innerHTML = chessBoard();
+
+        //Rainbow
+
+        var colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+
+        var arcWidth = 30;
+        var radius = 8 * arcWidth;
+
+        var rainbow = document.getElementById("c2");
+        var context = rainbow.getContext("2d");
+
+        rainbow.width = (radius + (colors.length - 0.5) * arcWidth) * 2;
+        rainbow.height = radius + (colors.length - 1) * arcWidth;
+
+        var drawArc = function (color) {
+            context.beginPath();
+            context.arc(rainbow.width / 2, rainbow.height + arcWidth / 2, radius,
+                Math.PI, 2 * Math.PI);
+            context.lineWidth = arcWidth;
+            context.strokeStyle = color;
+            context.stroke();
+            context.closePath();
+            radius += arcWidth;
+        };
+
+        colors.reverse().forEach(drawArc);
+    </script>
+</body>
+
+</html>
