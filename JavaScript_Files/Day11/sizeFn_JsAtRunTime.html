@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Increase & Decrease Function</title>
+    <style>
+        body {
+            background-color: powderblue;
+        }
+
+        div {
+            background-color: aliceblue;
+            text-align: center;
+            border: solid black 2px;
+            border-radius: 5px;
+            width: 60%;
+            margin: auto;
+        }
+
+        #button1 {
+            padding: 5px;
+            color: rgb(0, 0, 0);
+            background-color: rgb(120, 236, 169);
+            border: solid black 2px;
+            border-radius: 10px;
+            font-family: 'Times New Roman', Times, serif;
+
+        }
+
+        #button2 {
+            padding: 5px;
+            color: rgb(0, 0, 0);
+            background-color: rgb(236, 120, 120);
+            border: solid black 2px;
+            border-radius: 10px;
+            font-family: 'Times New Roman', Times, serif;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Adding CSS Properties via JS at Run Time</h1>
+        <h2 id="e1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non temporibus ut voluptatibus, nesciunt
+            ab,
+            quidem voluptate laboriosam praesentium libero, qui minus. Architecto maxime et dignissimos velit officia
+            iste
+            unde, alias, molestiae reiciendis excepturi culpa dolor nam! Optio cumque fuga, atque placeat at unde
+            cupiditate
+            eveniet asperiores reiciendis aspernatur quisquam veritatis.</h2>
+        <button id="button1" onclick="increaseFont()">Increase</button>
+        <button id="button2" onclick="decreaseFont()">Decrease</button>
+
+        <script type="text/javascript">
+
+            function increaseFont() {
+                counter = 0;
+                var ele1 = document.getElementById("e1");
+                ele1.style.fontSize = "xx-large";
+                ele1.style.color = "green";
+
+            }
+
+            function decreaseFont() {
+                counter = 0;
+                var ele2 = document.getElementById("e1");
+                ele2.style.fontSize = "small";
+                ele2.style.color = "red";
+
+            }
+
+        </script>
+    </div>
+    <h2 style="text-align: center;">Javascript Day11 - Javascript Node</h2>
+</body>
+
+</html>
