@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <style>
+        div {
+            background-color: azure;
+            text-align: center;
+            border: solid black 2px;
+            width: 300px;
+            height: 150px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    
+
+    <div>
+        <h2>Page 3 - Edit Age</h2>
+        <label>Change Age: </label>
+        <br>
+        <input type="number" name="age" id="a2" autocomplete="off">
+        <button onclick="editAge()">Edit</button><br>
+        <a href="storage_page2.html">Get Data</a>
+    </div>
+
+    <script type="text/javascript">
+
+        var a = sessionStorage.getItem('Age');
+        document.getElementById('a2').value = a;
+
+        function editAge() {
+            var age2 = document.getElementById('a2').value;
+            sessionStorage.setItem('Age', age2);
+
+        }
+    </script>
+
+
+</body>
+
+</html>

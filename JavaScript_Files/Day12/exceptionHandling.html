@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling</title>
+    <style>
+        div {
+            background-color: azure;
+            text-align: center;
+            border: solid black 2px;
+            width: 400px;
+            height: 250px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h3>Employment Form</h3>
+        <label> Name:</label><br>
+        <input type="text" id="n1"><br>
+        <label>Age:</lable><br>
+            <input type="number" id="a1">&nbsp;<p id="err"></p>
+            <input type="submit" onclick="errorCheck();">
+    </div>
+    <script type="text/javascript">
+        function errorCheck() {
+            var name = document.getElementById('n1').value;
+            var age = document.getElementById('a1').value;
+            try {
+                if (parseInt(age) > 18 && parseInt(age) < 60) {
+                    document.getElementById('err').innerHTML = '';
+                    alert('All good');
+                } else {
+                    throw "<b>You are not eligible!</b>";
+                }
+            } catch (error) {
+
+                document.getElementById('err').innerHTML = error;
+            }
+        }
+    </script>
+</body>
+
+</html>

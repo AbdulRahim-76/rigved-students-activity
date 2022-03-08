@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <style type="text/css">
+        div {
+            background-color: azure;
+            text-align: center;
+            border: solid black 2px;
+            width: 300px;
+            height: 250px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>Page 1 - Store Data</h2>
+        <label>Name:</label><br>
+        <input type="text" id="un" name="userName" autocomplete="off"><br>
+        <label>Age:</label><br>
+        <input type="number" id="a1" name="age" autocomplete="off"><br><br>
+        <input type="button" value="store" onclick="storeData()">
+        <br><br>
+        <a href="storage_page2.html">Get saved Data</a>
+    </div>
+
+    <script>
+        function storeData() {
+            var name = document.getElementById('un').value;
+            var age = document.getElementById('a1').value;
+            if (name.length < 1 && age.length < 1) {
+                alert("Please Enter Some Input!");
+            } else {
+                sessionStorage.setItem('Name', name);
+                sessionStorage.setItem('Age', age);
+            }
+        }
+    </script>
+</body>
+
+</html>
