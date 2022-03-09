@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day13 Javascript</title>
+    <style type="text/css">
+        #i1 {
+            background-color: aliceblue;
+            border: solid black 2px;
+            border-radius: 5px;
+            width: 600px;
+            padding-left: 10px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="i1">
+        <h2>Numbers Supplied (Inputs): (10, 20, 30, 5, 15)</h2>
+        <h3>a=10 , b=[20,30,5,15]</h3>
+        <h3>Output:</h3>
+        <h3 id="i2"></h3>
+
+
+        <script type="text/javascript">
+
+            class Calci {
+                constructor(a, ...b) {
+                    this.a = a;
+                    this.b = b;
+                }
+                display() {
+                    var sum = this.a;
+                    var max = this.a;
+                    var min = this.a;
+
+                    for (var i = 0; i < this.b.length; i++) {
+
+                        sum += this.b[i];
+
+                        if (max < this.b[i]) {
+                            max = this.b[i];
+                        }
+                        if (min > this.b[i]) {
+                            min = this.b[i];
+                        }
+
+                    }
+
+                    document.getElementById('i2').innerHTML = "Sum of a & b = " + sum + ", Max= " + max + ", Min= " + min;
+                }
+            }
+
+            var c = new Calci(10, 20, 30, 5, 15);
+            c.display();
+
+        </script>
+    </div>
+    <h2 style="text-align: center;">Javascript Day13 - Rest & Spread Operators</h2>
+</body>
+
+</html>
