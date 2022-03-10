@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day14 Activity1</title>
+    <style>
+        body {
+            background-color: azure;
+        }
+
+        table {
+            background-color: ghostwhite;
+            text-align: center;
+            border: solid black 2px;
+            border-radius: 5px;
+            width: 60%;
+            margin: auto;
+        }
+
+        th {
+            background-color: gainsboro;
+            text-align: center;
+            padding: 22px;
+            border: 1px solid black;
+        }
+
+        td {
+
+            text-align: center;
+            padding: 22px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Template literal with Optional Chain Syntax</h1>
+    <script type=text/javascript>
+    let users = [
+    {name: "Alex", age: 25, address:{city: "MUM", state: "MH" }},
+    {name: "Bruce", age: 45,},
+    {name: "Charles", age: 43, address:{city: "BLR", state: "KA" }},
+    {name: "David", age: 36,},
+    {name: "Edward", age: 41, address:{city: "CHN", state: "TN" }},
+    ];
+    document.write("<table>");
+    document.write("<tr><th>Name</th> <th>Age</th> <th>City</th> <th>State</th></tr>");
+    for( i=0; i<users.length; i++)
+    document.write(`<tr><td> ${users[i].name}</td><td> ${users[i].age}</td><td> ${users[i]?.address?.city}</td><td>  ${users[i]?.address?.state}</td></tr>`);
+    document.write("</table>");
+    
+    </script>
+
+    <h2 style="text-align: center;">Javascript Day14 - Activity 1 </h2>
+
+</body>
+
+</html>
