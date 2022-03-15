@@ -1,0 +1,145 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| first_db           |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use first_db;
+Database changed
+
+1. CREATE -
+
+mysql> create table employee(employee_id int primary key, employee_name varchar(20) not null, employee_age int check(employee_age>=18 and employee_age<=60), email varchar(20) unique);
+Query OK, 0 rows affected, 1 warning (0.04 sec)
+
+mysql> select * from employee;
+Empty set (0.00 sec)
+
+mysql> desc employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| employee_id   | int         | NO   | PRI | NULL    |       |
+| employee_name | varchar(20) | NO   |     | NULL    |       |
+| employee_age  | int         | YES  |     | NULL    |       |
+| email         | varchar(20) | YES  | UNI | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+2. INSERT -
+
+mysql> insert into employee values(101, 'Abdul', 18, 'abdul@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(201, 'Pravin', 60, 'pmishra@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++-------------+---------------+--------------+------------------+
+| employee_id | employee_name | employee_age | email            |
++-------------+---------------+--------------+------------------+
+|         101 | Abdul         |           18 | abdul@gmail.com  |
+|         201 | Pravin        |           60 | pmishra@gmail.com|
++-------------+---------------+--------------+------------------+
+2 rows in set (0.00 sec)
+
+3. CONSTRAINT - CHECK -
+
+mysql> insert into employee values(301, 'Pradeep', 70, 'pradeep@gmail.com');
+ERROR 3819 (HY000): Check constraint 'employee_chk_1' is violated.
+
+mysql> insert into employee values(301, 'Sagar', 17, 'sagar@gmail.com');
+ERROR 3819 (HY000): Check constraint 'employee_chk_1' is violated.
+
+4. CONSTRAINT - UNIQUE -
+
+mysql> insert into employee values(401, 'Pankaj', 25, 'pmishra@gmail.com');
+ERROR 1062 (23000): Duplicate entry 'pmishra@gmail.com' for key 'employee.email'
+
+5. ALTER -
+
+mysql> alter table employee add column pan varchar(20) unique;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee add column aadhar int unique;
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> select * from employee;
++-------------+---------------+--------------+------------------+------+--------+
+| employee_id | employee_name | employee_age | email            | pan  | aadhar |
++-------------+---------------+--------------+------------------+------+--------+
+|         101 | Abdul         |           18 | abdul@gmail.com  | NULL |   NULL |
+|         201 | Pravin        |           60 | pmishra@gmail.com| NULL |   NULL |
++-------------+---------------+--------------+------------------+------+--------+
+2 rows in set (0.00 sec)
+
+6. Adding unique-constraint to pan & aadhar -
+
+mysql>  alter table employee add constraint unique (pan);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee add constraint unique (aadhar);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| employee_id   | int         | NO   | PRI | NULL    |       |
+| employee_name | varchar(20) | NO   |     | NULL    |       |
+| employee_age  | int         | YES  |     | NULL    |       |
+| email         | varchar(20) | YES  | UNI | NULL    |       |
+| pan           | varchar(20) | YES  | UNI | NULL    |       |
+| aadhar        | int         | YES  | UNI | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+7. Inserting values for pan and aadhar -
+
+mysql> insert into employee values(301, 'Abhishek', 30, 'abhi@gmail.com', 'JPSZ723', 123456789332);
+Query OK, 1 row affected (0.00 sec)
+
+> Inserting duplicate values for pan and aadhar -
+
+mysql> insert into employee values(401, 'Archit', 38, 'archit@gmail.com', 'JPSZ723', 123456756789);
+ERROR 1062 (23000): Duplicate entry 'JPSZ723' for key 'employee.pan'
+
+8. DROP pan & aadhar - 
+
+mysql> alter table employee drop pan;
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee drop aadhar;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+9.Table without pan & aadhar column -
+
+mysql> select * from employee;
++-------------+---------------+--------------+-------------------+
+| employee_id | employee_name | employee_age | email             |
++-------------+---------------+--------------+-------------------+
+|         101 | Abdul         |           18 | abdul@gmail.com   |
+|         201 | Pravin        |           60 | pmishra@gmail.com |
+|         301 | Abhishek      |           30 | abhi@gmail.com    |
++-------------+---------------+--------------+-------------------+
+3 rows in set (0.00 sec)
+
+10. DROP the table - 
+
+mysql> drop table employee;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
+Empty set (0.01 sec)
