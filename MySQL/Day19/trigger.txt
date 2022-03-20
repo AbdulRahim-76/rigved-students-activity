@@ -1,0 +1,78 @@
+1. Table - user & user_history
+
+mysql> CREATE table user (UserId int primary key auto_increment, Name varchar(25), Password varchar(25))$$
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> CREATE table user_history(UserId int,Name varchar(25), old_password varchar(25),Time time)$$
+Query OK, 0 rows affected (0.37 sec)
+
+mysql> DESC user$$
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| UserId   | int         | NO   | PRI | NULL    | auto_increment |
+| Name     | varchar(25) | YES  |     | NULL    |                |
+| Password | varchar(25) | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+3 rows in set (0.18 sec)
+
+mysql> DESC user_history$$
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| UserId       | int         | YES  |     | NULL    |       |
+| Name         | varchar(25) | YES  |     | NULL    |       |
+| old_password | varchar(25) | YES  |     | NULL    |       |
+| Time         | time        | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+
+
+mysql> INSERT into user(Name, Password) values('Eren','attackT'),('Mikasa','ackerman2'),('Armin','arlert3')$$
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * from user$$
++--------+--------+------------+
+| UserId | Name   | Password   |
++--------+--------+------------+
+|      1 | Eren   | attackT    |
+|      2 | Mikasa | ackerman2  |
+|      3 | Armin  | arlert3    |
++--------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * from user_history$$
+Empty set (0.04 sec)
+
+2. Trigger -
+
+mysql> CREATE trigger update_user_history
+    -> before update on user for each row
+    -> begin
+    -> insert into user_history(Name,old_password,Time) values(old.Name, old.Password, current_time());
+    -> end
+    -> $$
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> UPDATE user set Password = 'foundingT' where UserId = 1 $$
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * from user_history $$
++--------+--------+--------------+----------+
+| UserId | Name   | old_password | Time     |
++--------+--------+--------------+----------+
+|   NULL | Eren   | attackT      | 18:01:26 |
++--------+--------+--------------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * from user $$
++--------+--------+------------+
+| UserId | Name   | Password   |
++--------+--------+------------+
+|      1 | Eren   | foundingT  |
+|      2 | Mikasa | ackerman2  |
+|      3 | Armin  | arlert3    |
++--------+--------+------------+
+3 rows in set (0.00 sec)
