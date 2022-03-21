@@ -1,0 +1,107 @@
+_____________________________________________________________________
+1. Collection - 'employee' , 'Employee'
+_____________________________________________________________________
+
+> db.createCollection('employee');
+{ "ok" : 1 }
+> db.createCollection('EMPLOYEE');
+{ "ok" : 1 }
+
+> show collections;
+EMPLOYEE
+employee
+myCollections
+_____________________________________________________________________
+2.Collection - user with (_id, name, password)
+_____________________________________________________________________
+
+> db.createCollection('user');
+{ "ok" : 1 }
+
+> show collections;
+EMPLOYEE
+employee
+myCollections
+user
+____________________________________________________________________
+3.User Collection -
+____________________________________________________________________
+
+> db.user.insertMany([
+... {_id:10,name:'Goku',password:'kakarot'},
+... {_id:11,name:'Vegeta',password:'prince'},
+... {_id:12,name:'Broly',password:'legendary'}
+... ]);
+{ "acknowledged" : true, "insertedIds" : [ 10, 11, 12 ] }
+
+_____________________________________________________________________
+4.Find - user based on the _id 
+_____________________________________________________________________
+
+> db.user.find({_id:10});
+{ "_id" : 10, "name" : "Goku", "password" : "kakarot" }
+
+> db.user.find({_id:11});
+{ "_id" : 11, "name" : "Vegeta", "password" : "prince" }
+
+_____________________________________________________________________
+5.Delete - user based on the _id
+_____________________________________________________________________
+
+> db.user.deleteOne({_id:10});
+{ "acknowledged" : true, "deletedCount" : 1 }
+
+> db.user.find();
+{ "_id" : 11, "name" : "Vegeta", "password" : "prince" }
+{ "_id" : 12, "name" : "Broly", "password" : "legendary" }
+
+______________________________________________________________________
+6.Delete - all the users on one go
+______________________________________________________________________
+
+> db.user.deleteMany({});
+{ "acknowledged" : true, "deletedCount" : 2 }
+
+> db.user.find();
+
+______________________________________________________________________
+7.Store - some more documents in the user collection
+______________________________________________________________________
+
+> db.user.insertMany([
+... {_id:10,name:'Goku',password:'dragonball'},
+... {_id:11,name:'Ichigo',password:'bleach'},
+... {_id:12,name:'Light',password:'deathnote'}
+... ]);
+{ "acknowledged" : true, "insertedIds" : [ 10, 11, 12 ] }
+
+> db.user.find();
+{ "_id" : 10, "name" : "Goku", "password" : "dragonball" }
+{ "_id" : 11, "name" : "Ichigo", "password" : "bleach" }
+{ "_id" : 12, "name" : "Light", "password" : "deathnote" }
+
+
+> db.user.insertMany([{_id:13,name:'Eren',password:'attackontitan'},{_id:14,name:'Tanjiro',password:'demonslayer'}]);
+{ "acknowledged" : true, "insertedIds" : [ 14, 15 ] }
+
+> db.user.find();
+{ "_id" : 10, "name" : "Goku", "password" : "dragonball" }
+{ "_id" : 11, "name" : "Ichigo", "password" : "bleach" }
+{ "_id" : 12, "name" : "Light", "password" : "deathnote" }
+{ "_id" : 13, "name" : "Eren", "password" : "attackontitan" }
+{ "_id" : 14, "name" : "Tanjiro", "password" : "demonslayer" }
+
+
+_____________________________________________________________________
+8.Update - password of a particular user using _id
+_____________________________________________________________________
+
+> db.user.updateOne({_id:13},{$set:{'password':'aot'}});
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+
+> db.user.find();
+{ "_id" : 10, "name" : "Goku", "password" : "dragonball" }
+{ "_id" : 11, "name" : "Ichigo", "password" : "bleach" }
+{ "_id" : 12, "name" : "Light", "password" : "deathnote" }
+{ "_id" : 13, "name" : "Eren", "password" : "aot" }
+{ "_id" : 14, "name" : "Tanjiro", "password" : "demonslayer" }
