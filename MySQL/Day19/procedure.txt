@@ -37,45 +37,39 @@ mysql> CREATE procedure salutation(in pid int)
     -> select name into n from person where id=pid;
     -> select gender into g from person where id=pid;
     -> if lower(g) = 'male'
-    -> then update person set name=concat('Mr.',n) where id=pid;
-    -> else update person set name=concat('Ms.',n) where id=pid;
+    -> then select concat('Mr.',n);
+    -> else select concat('Ms.',n);
     -> end if;
     -> end
     -> $$
 Query OK, 0 rows affected (0.01 sec)
 
-mysql> SELECT * from person$$
-+----+---------+--------+
-| id | name    | gender |
-+----+---------+--------+
-|  1 | Eren    | Male   |
-|  2 | Mikasa  | Female |
-|  3 | Armin   | Male   |
-+----+---------+--------+
-3 rows in set (0.45 sec)
-
 mysql> CALL salutation(1)$$
-Query OK, 1 row affected (0.03 sec)
++-----------------+
+| concat('Mr.',n) |
++-----------------+
+| Mr.Eren         |
++-----------------+
+1 row in set (0.03 sec)
 
-mysql> SELECT * from person$$
-+----+---------+--------+
-| id | name    | gender |
-+----+---------+--------+
-|  1 | Mr.Eren | Male   |
-|  2 | Mikasa  | Female |
-|  3 | Armin   | Male   |
-+----+---------+--------+
-3 rows in set (0.00 sec)
+Query OK, 0 rows affected (0.04 sec)
 
 mysql> CALL salutation(2)$$
-Query OK, 1 row affected (0.03 sec)
++-----------------+
+| concat('Ms.',n) |
++-----------------+
+| Ms.Mikasa       |
++-----------------+
+1 row in set (0.03 sec)
+
+Query OK, 0 rows affected (0.04 sec)
 
 mysql> SELECT * from person$$
-+----+-----------+--------+
-| id | name      | gender |
-+----+-----------+--------+
-|  1 | Mr.Eren   | Male   |
-|  2 | Ms.Mikasa | Female |
-|  3 | Armin     | Male   |
-+----+-----------+--------+
++----+--------+--------+
+| id | name   | gender |
++----+--------+--------+
+|  1 | Eren   | Male   |
+|  2 | Mikasa | Female |
+|  3 | Armin  | Male   |
++----+--------+--------+
 3 rows in set (0.00 sec)
