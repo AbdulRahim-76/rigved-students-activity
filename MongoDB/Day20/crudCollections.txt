@@ -2,30 +2,47 @@ _____________________________________________________________________
 1. Collection - 'employee' , 'Employee'
 _____________________________________________________________________
 
+'employee' -
+_____________
+
 > db.createCollection('employee');
 { "ok" : 1 }
+
+> db.employee.insert({_id:1,name:'Abdul'});
+WriteResult({ "nInserted" : 1 })
+
+> db.employee.insert({_id:2,name:'Kakarot'});
+WriteResult({ "nInserted" : 1 })
+
+> db.employee.find();
+{ "_id" : 1, "name" : "Abdul" }
+{ "_id" : 2, "name" : "Kakarot" }
+
+'Employee' -
+_____________
+
 > db.createCollection('EMPLOYEE');
 { "ok" : 1 }
+
+> db.EMPLOYEE.insert({_id:1,name:'Rahim'});
+WriteResult({ "nInserted" : 1 })
+
+> db.EMPLOYEE.insert({_id:2,name:'Kakarot'});
+WriteResult({ "nInserted" : 1 })
+
+> db.EMPLOYEE.find();
+{ "_id" : 1, "name" : "Rahim" }
+{ "_id" : 2, "name" : "Kakarot" }
 
 > show collections;
 EMPLOYEE
 employee
-myCollections
 _____________________________________________________________________
-2.Collection - user with (_id, name, password)
+2,3. Collection - user with (_id, name, password)
 _____________________________________________________________________
 
 > db.createCollection('user');
 { "ok" : 1 }
-
-> show collections;
-EMPLOYEE
-employee
-myCollections
-user
-____________________________________________________________________
-3.User Collection -
-____________________________________________________________________
 
 > db.user.insertMany([
 ... {_id:10,name:'Goku',password:'kakarot'},
