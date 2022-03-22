@@ -1,0 +1,84 @@
+> show collections;
+EMPLOYEE
+employee
+user
+
+> db.user.find({});
+{ "_id" : 1, "name" : "Abdul", "password" : "abcdxyz" }
+{ "_id" : 2, "name" : "Kakarot", "password" : "xyzabc" }
+{ "_id" : 3, "name" : "Axel", "address" : { "state" : "MH", "city" : "Mumbai" } }
+{ "_id" : 4, "name" : "Eren", "password" : "efghi" }
+{ "_id" : 5, "name" : "Light", "password" : "jklmno" }
+{ "_id" : 6, "name" : "Axel", "dob" : ISODate("2022-03-22T10:36:27.627Z") }
+{ "_id" : 7, "name" : "Axel", "dob" : "Tuesday, March 22, 2022" }
+
+> db.user.find({name:{$eq:'Axel'}});
+{ "_id" : 3, "name" : "Axel", "address" : { "state" : "MH", "city" : "Mumbai" } }
+{ "_id" : 6, "name" : "Axel", "dob" : ISODate("2022-03-22T10:36:27.627Z") }
+{ "_id" : 7, "name" : "Axel", "dob" : "Tuesday, March 22, 2022" }
+
+> db.user.find({_id:{$lt:4}});
+{ "_id" : 1, "name" : "Abdul", "password" : "abcdxyz" }
+{ "_id" : 2, "name" : "Kakarot", "password" : "xyzabc" }
+{ "_id" : 3, "name" : "Axel", "address" : { "state" : "MH", "city" : "Mumbai" } }
+
+> db.user.find({_id:{$gt:5}});
+{ "_id" : 6, "name" : "Axel", "dob" : ISODate("2022-03-22T10:36:27.627Z") }
+{ "_id" : 7, "name" : "Axel", "dob" : "Tuesday, March 22, 2022" }
+
+> db.user.find({_id:{$gte:5}});
+{ "_id" : 5, "name" : "Light", "password" : "jklmno" }
+{ "_id" : 6, "name" : "Axel", "dob" : ISODate("2022-03-22T10:36:27.627Z") }
+{ "_id" : 7, "name" : "Axel", "dob" : "Tuesday, March 22, 2022" }
+
+> db.user.find({_id:{$lte:4}});
+{ "_id" : 1, "name" : "Abdul", "password" : "abcdxyz" }
+{ "_id" : 2, "name" : "Kakarot", "password" : "xyzabc" }
+{ "_id" : 3, "name" : "Axel", "address" : { "state" : "MH", "city" : "Mumbai" } }
+{ "_id" : 4, "name" : "Eren", "password" : "efghi" }
+
+> db.user.find({_id:{$ne:1}});
+{ "_id" : 2, "name" : "Kakarot", "password" : "xyzabc" }
+{ "_id" : 3, "name" : "Axel", "address" : { "state" : "MH", "city" : "Mumbai" } }
+{ "_id" : 4, "name" : "Eren", "password" : "efghi" }
+{ "_id" : 5, "name" : "Light", "password" : "jklmno" }
+{ "_id" : 6, "name" : "Axel", "dob" : ISODate("2022-03-22T10:36:27.627Z") }
+{ "_id" : 7, "name" : "Axel", "dob" : "Tuesday, March 22, 2022" }
+
+> db.user.find({_id:{$in:[5,6]}});
+{ "_id" : 5, "name" : "Light", "password" : "jklmno" }
+{ "_id" : 6, "name" : "Axel", "dob" : ISODate("2022-03-22T10:36:27.627Z") }
+
+> db.user.find({_id:{$nin:[5,6]}});
+{ "_id" : 1, "name" : "Abdul", "password" : "abcdxyz" }
+{ "_id" : 2, "name" : "Kakarot", "password" : "xyzabc" }
+{ "_id" : 3, "name" : "Axel", "address" : { "state" : "MH", "city" : "Mumbai" } }
+{ "_id" : 4, "name" : "Eren", "password" : "efghi" }
+{ "_id" : 7, "name" : "Axel", "dob" : "Tuesday, March 22, 2022" }
+
+> db.user.find({$or:[{_id:2},{name:'Axel'}]});
+{ "_id" : 2, "name" : "Kakarot", "password" : "xyzabc" }
+{ "_id" : 3, "name" : "Axel", "address" : { "state" : "MH", "city" : "Mumbai" } }
+{ "_id" : 6, "name" : "Axel", "dob" : ISODate("2022-03-22T10:36:27.627Z") }
+{ "_id" : 7, "name" : "Axel", "dob" : "Tuesday, March 22, 2022" }
+
+> db.user.find({$and:[{_id:{$gt:3}},{name:'Axel'}]});
+{ "_id" : 6, "name" : "Axel", "dob" : ISODate("2022-03-22T10:36:27.627Z") }
+{ "_id" : 7, "name" : "Axel", "dob" : "Tuesday, March 22, 2022" }
+
+> db.user.find({$nor:[{_id:{$gt:5}},{name:'Axel'}]});
+{ "_id" : 1, "name" : "Abdul", "password" : "abcdxyz" }
+{ "_id" : 2, "name" : "Kakarot", "password" : "xyzabc" }
+{ "_id" : 4, "name" : "Eren", "password" : "efghi" }
+{ "_id" : 5, "name" : "Light", "password" : "jklmno" }
+
+> db.user.find({_id:{$not:{$gt:4}}});
+{ "_id" : 1, "name" : "Abdul", "password" : "abcdxyz" }
+{ "_id" : 2, "name" : "Kakarot", "password" : "xyzabc" }
+{ "_id" : 3, "name" : "Axel", "address" : { "state" : "MH", "city" : "Mumbai" } }
+{ "_id" : 4, "name" : "Eren", "password" : "efghi" }
+
+> db.user.find({$where: function(){return this.name=='Axel'}});
+{ "_id" : 3, "name" : "Axel", "address" : { "state" : "MH", "city" : "Mumbai" } }
+{ "_id" : 6, "name" : "Axel", "dob" : ISODate("2022-03-22T10:36:27.627Z") }
+{ "_id" : 7, "name" : "Axel", "dob" : "Tuesday, March 22, 2022" }

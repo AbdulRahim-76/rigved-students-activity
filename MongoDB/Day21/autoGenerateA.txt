@@ -1,0 +1,109 @@
+> use mydb;
+switched to db mydb
+
+> show collections;
+EMPLOYEE
+employee
+
+> db.createCollection('product');
+{ "ok" : 1 }
+
+> db.createCollection('product_count');
+{ "ok" : 1 }
+
+> db.product_count.insert({_id:'product_id', sequence_value:0});
+WriteResult({ "nInserted" : 1 })
+
+> db.system.js.save(
+...  {
+...   _id : 'nextSequence',
+...   value : function (sequence){
+... var document = db.product_count.findAndModify({
+...       query:{_id: sequence },
+...        update: {$inc:{sequence_value:1}},
+...        new:true
+...      });
+...
+...       return document.sequence_value;
+... }
+...   });
+WriteResult({
+        "nMatched" : 0,
+        "nUpserted" : 1,
+        "nModified" : 0,
+        "_id" : "nextSequence"
+})
+
+> show collections;
+EMPLOYEE
+employee
+product
+product_count
+system.js
+
+
+> db.loadServerScripts();
+
+> db.product.insert({  "_id": nextSequence("product_id"),  "name": "ACER",  "category": "Laptop", });
+WriteResult({ "nInserted" : 1 })
+
+> db.product.insert({  "_id": nextSequence("product_id"),  "name": "ASUS",  "category": "Laptop", });
+WriteResult({ "nInserted" : 1 })
+
+> db.product.insert({  "_id": nextSequence("product_id"),  "name": "DELL",  "category": "Laptop", });
+WriteResult({ "nInserted" : 1 })
+
+> db.product.insert({  "_id": nextSequence("product_id"),  "name": "HP",  "category": "Laptop", });
+WriteResult({ "nInserted" : 1 })
+
+> db.product.insert({  "_id": nextSequence("product_id"),  "name": "LENOVO",  "category": "Laptop", });
+WriteResult({ "nInserted" : 1 })
+
+> db.product.find({});
+{ "_id" : 1, "name" : "ACER", "category" : "Laptop" }
+{ "_id" : 2, "name" : "ASUS", "category" : "Laptop" }
+{ "_id" : 3, "name" : "DELL", "category" : "Laptop" }
+{ "_id" : 4, "name" : "HP", "category" : "Laptop" }
+{ "_id" : 5, "name" : "LENOVO", "category" : "Laptop" }
+
+__________________________
+> D:\>exit
+>> databases terminated.
+__________________________
+
+Restart -
+__________
+
+( D:\>mongo
+  MongoDB shell version v5.0.6
+  connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+  Implicit session: session { "id" : UUID("527d560f-65cf-4820-a8e1-7fd3158ef41a") }
+  MongoDB server version: 5.0.6
+  ================ ............ )
+
+> use mydb;
+switched to db mydb
+
+> show collections;
+EMPLOYEE
+employee
+product
+product_count
+system.js
+
+> db.product.insert({  "_id": nextSequence("product_id"),  "name": "MSI",  "category": "Laptop", });
+uncaught exception: ReferenceError: nextSequence is not defined :
+@(shell):1:22
+
+> db.loadServerScripts();
+
+> db.product.insert({  "_id": nextSequence("product_id"),  "name": "MSI",  "category": "Laptop", });
+WriteResult({ "nInserted" : 1 })
+
+> db.product.find({});
+{ "_id" : 1, "name" : "ACER", "category" : "Laptop" }
+{ "_id" : 2, "name" : "ASUS", "category" : "Laptop" }
+{ "_id" : 3, "name" : "DELL", "category" : "Laptop" }
+{ "_id" : 4, "name" : "HP", "category" : "Laptop" }
+{ "_id" : 5, "name" : "LENOVO", "category" : "Laptop" }
+{ "_id" : 6, "name" : "MSI", "category" : "Laptop" }

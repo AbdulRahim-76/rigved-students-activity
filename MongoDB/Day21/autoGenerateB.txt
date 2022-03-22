@@ -1,0 +1,106 @@
+> use mydb;
+switched to db mydb
+
+> show collections;
+EMPLOYEE
+employee
+product
+product_count
+system.js
+
+> db.createCollection('university');
+{ "ok" : 1 }
+
+> db.createCollection('university_count');
+{ "ok" : 1 }
+
+> db.university_count.insert({_id:'xyz', sequence_value:0});
+WriteResult({ "nInserted" : 1 })
+
+> db.system.js.save(
+...  {
+...   _id : 'nextSequence',
+...   value : function (sequence){
+... var document = db.university_count.findAndModify({
+...       query:{_id: sequence },
+...        update: {$inc:{sequence_value:1}},
+...        new:true
+...      });
+...
+...       return sequence+document.sequence_value;
+... }
+...   });
+WriteResult({
+        "nMatched" : 0,
+        "nUpserted" : 1,
+        "nModified" : 0,
+        "_id" : "nextSequence"
+})
+
+
+> show collections;
+EMPLOYEE
+employee
+product
+product_count
+system.js
+university
+university_count
+
+> db.loadServerScripts();
+
+> db.university.insert({  "_id": nextSequence("xyz"),  "name": "Abdul",  "cgpa": 7.21 });
+WriteResult({ "nInserted" : 1 })
+
+> db.university.insert({  "_id": nextSequence("xyz"),  "name": "Pravin",  "cgpa": 7 });
+WriteResult({ "nInserted" : 1 })
+
+> db.university.insert({  "_id": nextSequence("xyz"),  "name": "Pradeep",  "cgpa": 8.1 });
+WriteResult({ "nInserted" : 1 })
+
+> db.university.find();
+{ "_id" : "xyz1", "name" : "Abdul", "cgpa" : 7.21 }
+{ "_id" : "xyz2", "name" : "Pravin", "cgpa" : 7 }
+{ "_id" : "xyz3", "name" : "Pradeep", "cgpa" : 8.1 }
+
+__________________________
+> D:\>exit
+>> databases terminated.
+__________________________
+
+Restart -
+__________
+
+( D:\>mongo
+  MongoDB shell version v5.0.6
+  connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+  Implicit session: session { "id" : UUID("527d560f-65cf-4820-a8e1-7fd3158ef41a") }
+  MongoDB server version: 5.0.6
+  ================ ............ )
+
+> use mydb;
+switched to db mydb
+
+> show collections;
+EMPLOYEE
+employee
+product
+product_count
+system.js
+university
+university_count
+
+> db.university.insert({  "_id": nextSequence("xyz"),  "name": "Sahil",  "cgpa": 8.5, });
+uncaught exception: ReferenceError: nextSequence is not defined :
+@(shell):1:22
+
+> db.loadServerScripts();
+
+> db.university.insert({  "_id": nextSequence("xyz"),  "name": "Sahil",  "cgpa": 8.5, });
+WriteResult({ "nInserted" : 1 })
+
+> db.university.find();
+{ "_id" : "xyz1", "name" : "Abdul", "cgpa" : 7.21 }
+{ "_id" : "xyz2", "name" : "Pravin", "cgpa" : 7 }
+{ "_id" : "xyz3", "name" : "Pradeep", "cgpa" : 8.1 }
+{ "_id" : "xyz4", "name" : "Sahil", "cgpa" : 8.5 }
