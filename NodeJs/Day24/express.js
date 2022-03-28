@@ -1,7 +1,7 @@
 let fs = require("fs");
-data = fs.readFileSync("emp.json");
-dataString = data.toString();
-jsArray = JSON.parse(dataString);
+let data = fs.readFileSync("emp.json");
+let dataString = data.toString();
+let jsArray = JSON.parse(dataString);
 console.log(jsArray);
  
 let express = require("express");
