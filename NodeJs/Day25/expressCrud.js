@@ -3,8 +3,6 @@ let fs = require('fs');
 let app = express();
 let PORT = 3000;
 
-
-
 app.listen(PORT, () => {
     console.log(`Server is running at ${PORT}`)
 });
@@ -12,7 +10,6 @@ app.listen(PORT, () => {
 // 1. store userid, name & age
 
 app.post('/user/:userId/:userName/:userAge', (request, response) => {
-
 
     let data = fs.readFileSync('user.json');
     let string = data.toString();
@@ -24,14 +21,12 @@ app.post('/user/:userId/:userName/:userAge', (request, response) => {
         userArray = JSON.parse(string);
     }
 
-
     let id = request.params.userId;
     let name = request.params.userName;
     let age = request.params.userAge;
     let user = { userId: id, userName: name, userAge: age };
-
     userArray.push(user);
-
+    
     let users = JSON.stringify(userArray);
     fs.writeFileSync('user.json', users);
     response.json(userArray);
@@ -44,9 +39,7 @@ app.get('/user/', (request, response) => {
 
     let data = fs.readFileSync('user.json');
     let dataString = data.toString();
-
     let users = JSON.parse(dataString);
-
     response.json(users);
 });
 
