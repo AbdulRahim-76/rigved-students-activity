@@ -1,6 +1,10 @@
 let express = require('express');
 let fs = require('fs');
+let parser = require('body-parser');
+
 let app = express();
+app.use(parser.json());
+
 let PORT = 3000;
 
 app.listen(PORT, () => {
@@ -9,7 +13,7 @@ app.listen(PORT, () => {
 
 // 1. store userid, name & age
 
-app.post('/user/:userId/:userName/:userAge', (request, response) => {
+app.post('/user', (request, response) => {
 
     let data = fs.readFileSync('user.json');
     let string = data.toString();
@@ -21,12 +25,9 @@ app.post('/user/:userId/:userName/:userAge', (request, response) => {
         userArray = JSON.parse(string);
     }
 
-    let id = request.params.userId;
-    let name = request.params.userName;
-    let age = request.params.userAge;
-    let user = { userId: id, userName: name, userAge: age };
+    let user = request.body;
     userArray.push(user);
-    
+
     let users = JSON.stringify(userArray);
     fs.writeFileSync('user.json', users);
     response.json(userArray);
@@ -49,12 +50,12 @@ app.get('/user/:userId', (request, response) => {
 
     let id = request.params.userId;
     let data = fs.readFileSync('user.json');
-    let datastring = data.toString();
-    let users = JSON.parse(datastring);
+    let dataString = data.toString();
+    let users = JSON.parse(dataString);
 
     for (let i = 0; i < users.length; i++) {
-        if (users[i].userId == id) {
-            let user = { userId: users[i].userId, name: users[i].userName, age: users[i].userAge };
+        if (users[i].id == id) {
+            let user = { id: users[i].id, name: users[i].name, age: users[i].age };
             response.json(user);
         }
     }
@@ -63,13 +64,14 @@ app.get('/user/:userId', (request, response) => {
 // delete user by id
 
 app.delete('/user/:userId', (request, response) => {
+
     let id = request.params.userId;
     let data = fs.readFileSync('user.json');
-    let datastring = data.toString();
-    let users = JSON.parse(datastring);
+    let dataString = data.toString();
+    let users = JSON.parse(dataString);
 
     for (let i = 0; i < users.length; i++) {
-        if (users[i].userId == id) {
+        if (users[i].id == id) {
             users.splice(i, 1);
             let userData = JSON.stringify(users);
             fs.writeFileSync('user.json', userData);

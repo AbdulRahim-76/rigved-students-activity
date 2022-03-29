@@ -1,1 +1,17 @@
-[{"userId":"100","userName":"Eren","userAge":"19"},{"userId":"200","userName":"Abdul Rahim","userAge":"23"},{"userId":"300","userName":"Kakarot","userAge":"45"}]
+[
+    {
+        "id": 100,
+        "name": "Abdul Rahim",
+        "age": 22
+    },
+    {
+        "id": 200,
+        "name": "Eren",
+        "age": 19
+    },
+    {
+        "id": 300,
+        "name": "Kakarot",
+        "age": 45
+    }
+]
