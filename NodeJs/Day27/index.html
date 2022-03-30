@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocketIO</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+
+        h2 {
+            text-align: center;
+            margin: auto;
+        }
+
+        .message-container {
+            border: 2px solid black;
+            background-color: lavender;
+            width: 300px;
+            height: 60vh;
+            margin: auto;
+        }
+
+        .input {
+
+            border: 2px solid black;
+            width: 300px;
+            padding: 2px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Client using Socket IO</h2><br>
+    <div class="message-container"></div>
+    <div class="input">
+        <input type="text" class="message">
+        <button onclick="sendMessage()">Send Message</button>
+    </div><br>
+    <h2>Day27 - Socket.io (NodeJs) </h2>
+
+    <script type="text/javascript">
+        const socket = io('http://localhost:3000');
+        socket.on('connection');
+
+        socket.on('recieve-message', (msg) => {
+            const div = document.createElement("div");
+            div.textContent = msg;
+            document.querySelector(".message-container").append(div);
+        });
+
+        const sendMessage = () => {
+            const msgInput = document.querySelector(".message");
+            const msg = msgInput.value;
+            socket.emit('send-message', msg);
+        };
+
+    </script>
+</body>
+
+</html>
