@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-structural-demo',
-  templateUrl: './structural-demo.component.html',
-  styleUrls: ['./structural-demo.component.css']
+  selector: 'app-structural-activity',
+  templateUrl: './structural-activity.component.html',
+  styleUrls: ['./structural-activity.component.css']
 })
-export class StructuralDemoComponent implements OnInit {
+export class StructuralActivityComponent implements OnInit {
 
   constructor() { }
 

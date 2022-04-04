@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StructuralDemoComponent } from './structural-demo.component';
+import { StructuralActivityComponent } from './structural-activity.component';
 
 describe('StructuralDemoComponent', () => {
-  let component: StructuralDemoComponent;
-  let fixture: ComponentFixture<StructuralDemoComponent>;
+  let component: StructuralActivityComponent;
+  let fixture: ComponentFixture<StructuralActivityComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StructuralDemoComponent ]
+      declarations: [ StructuralActivityComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StructuralDemoComponent);
+    fixture = TestBed.createComponent(StructuralActivityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

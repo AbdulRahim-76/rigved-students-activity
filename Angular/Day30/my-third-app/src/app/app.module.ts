@@ -3,13 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { Salutation } from './custom-pipe';
-import { StructuralDemoComponent } from './structural-demo/structural-demo.component';
+import { StructuralActivityComponent } from './structural-activity/structural-activity.component';
 import { JsObjActivityComponent } from './js-obj-activity/js-obj-activity.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StructuralDemoComponent,
+    StructuralActivityComponent,
     Salutation,
     JsObjActivityComponent
   ],
