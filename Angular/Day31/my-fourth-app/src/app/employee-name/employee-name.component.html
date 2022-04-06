@@ -1,0 +1,28 @@
+<div class="p-3 mb-2 bg-secondary text-white">
+    <div class="row">
+        <div class="col">
+            <h4>Enter your name:</h4>
+            Firstname : <input type="text" class="form-control" #first /> <br />
+            Lastname : <input type="text" class="form-control" #second /> <br />
+            <button (click)="save(first.value, second.value)" class="form-control">Save</button>
+        </div>
+
+        <div class="table-responsive p-3 col bg-white">
+            <table class="table table-warning table-striped table-bordered caption-top">
+                <caption>
+                    List of Name
+                </caption>
+                <thead>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of array">
+                        <td>{{ x.fname }}</td>
+                        <td>{{ x.lname }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
