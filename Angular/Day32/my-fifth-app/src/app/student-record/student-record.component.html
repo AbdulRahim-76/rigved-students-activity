@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Student Record</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let s of students">
+                <td>{{s.rollNo}}</td>
+                <td>{{s.name}}</td>
+                <td *ngIf="s.marks>=40; else elseBlock">
+                    <p [style]="pass">{{s.marks}}</p>
+                </td>
+                <ng-template #elseBlock>
+                    <div [style]="fail">{{s.marks}}</div>
+                </ng-template>
+            </tr>
+        </tbody>
+    </table>
+</div>
