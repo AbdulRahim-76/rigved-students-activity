@@ -1,0 +1,66 @@
+<div>
+    <h2>Registration Form Validation</h2>
+    <form #user="ngForm" (ngSubmit)="handleSubmit(user.value)">
+        <div>
+            First Name :
+            <input type="text" name="fn" ngModel #td1="ngModel" required minlength="3">
+            <span [hidden]="td1.valid || td1.pristine" class="text-danger">First name must be greater than and equal to
+                3</span>
+        </div>
+        <br>
+        <div>
+            Last Name:
+            <input type="text" name="ln" ngModel #td2="ngModel" required minlength="3">
+            <span [hidden]="td2.valid || td2.pristine" class="text-danger">Last name must be greater than and equal to
+                3</span>
+        </div>
+        <br>
+        <div>
+            Gender:
+            <input type="radio" name="gn" value="Male" ngModel #td3="ngModel" required> Male
+            <input type="radio" name="gn" value="Female" ngModel #td3="ngModel" required> Female
+            <span [hidden]="td3.valid || td3.pristine " class="text-danger">Must select Gender</span>
+        </div>
+        <br>
+        <div>
+            Skills:
+            <input type="checkbox" name="sk" value="Java" ngModel #td4="ngModel"> Java
+            <input type="checkbox" name="sk" value="C" ngModel #td4="ngModel" required> C
+            <input type="checkbox" name="sk" value="C++" ngModel #td4="ngModel" required> C++
+            <input type="checkbox" name="sk" value="Python" ngModel #td4="ngModel" required> Python
+            <span [hidden]="td4.valid || td4.pristine" class="text-danger">Must Select</span>
+        </div>
+        <br>
+        <div>
+            Qualification:
+            <select name="qa" ngModel #td5="ngModel" required>
+                <option value="BE">BE</option>
+                <option value="MBA">MBA</option>
+                <option value="MTECH">MTECH</option>
+            </select>
+            <span [hidden]="td5.valid || td5.pristine" class="text-danger">Must Select</span>
+        </div>
+        <br>
+        <div>
+            Address
+            <textarea name="ad" rows="3" cols="25" ngModel #td6="ngModel" required></textarea>
+            <span [hidden]="td6.valid || td6.pristine" class="text-danger">Input is mandatory</span>
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Register" [disabled]="user.invalid">
+        </div>
+    </form>
+    <br>
+    <!-- <p>User invalid: {{user.invalid}}</p>
+    <p>td1 valid: {{td1.valid}} </p>
+    <p>td1 pristine: {{td1.pristine}}</p> -->
+    <div [hidden]="user.invalid">
+        <p>First Name: {{first}}</p>
+        <p>Last Name: {{last}}</p>
+        <p>Gender: {{gender}}</p>
+        <p>Skill: {{skill}}</p>
+        <p>Qualification: {{qual}}</p>
+        <p>Address: {{add}}</p>
+    </div>
+</div>
