@@ -1,0 +1,22 @@
+<div>
+    <h2>Model Driven Form activity</h2>
+    <div>
+        <p>Firstname: <input [formControl]="firstname"></p>
+        <p>Lastname: <input [formControl]="lastname"></p>
+    </div>
+    <hr>
+    <div>
+        <p>Firstname Json object: {{firstname | json}}</p>
+        <p>Lastname Json object: {{lastname | json}}</p>
+    </div>
+    <hr>
+    <div>
+        <p>Firstname Value: {{firstname.value}}</p>
+        <p>Lastname Value: {{lastname.value}}</p>
+    </div>
+    <hr>
+    <div>
+        <p>Firstname touched : {{firstname.touched}}</p>
+        <p>Firstname pristine : {{firstname.pristine}}</p>
+    </div>
+</div>
