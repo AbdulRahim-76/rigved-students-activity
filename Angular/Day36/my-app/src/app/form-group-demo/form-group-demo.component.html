@@ -1,0 +1,21 @@
+<div>
+    <form [formGroup]="profile" (ngSubmit)="handleSubmit()">
+        <div>
+            Firstname:
+            <input type="text" formControlName="firstname">
+            <span class="text-danger"
+                [hidden]="profile.controls['firstname'].valid || profile.controls['firstname'].pristine">Firstname is
+                required</span>
+        </div>
+        <div>
+            Lastname:
+            <input type="text" formControlName="lastname">
+            <span class="text-danger"
+                [hidden]="profile.controls['lastname'].valid || profile.controls['lastname'].pristine">Lastname is
+                required</span>
+        </div>
+        <div>
+            <input type="submit" value="Submit" [disabled]="profile.invalid">
+        </div>
+    </form>
+</div>

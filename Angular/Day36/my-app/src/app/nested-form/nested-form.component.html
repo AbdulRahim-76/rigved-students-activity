@@ -1,0 +1,48 @@
+<div>
+    <h2>Registration Form</h2>
+    <form [formGroup]="profile" (ngSubmit)="handleSubmit()">
+        <div class="col-2">
+            Firstname:
+            <input type="text" formControlName="firstname">
+            <span class="text-danger"
+                [hidden]="profile.controls['firstname'].valid || profile.controls['firstname'].pristine"> Firstname is
+                Required</span>
+        </div>
+        <div class="col-2">
+            Lastname:
+            <input type="text" formControlName="lastname">
+            <span class="text-danger"
+                [hidden]="profile.controls['lastname'].valid || profile.controls['lastname'].pristine"> Lastname is
+                Required</span>
+        </div>
+        <div formGroupName="address">
+            <h3>Address</h3>
+            <div class="col-2">
+                State:
+                <input type="text" formControlName="state" name="">
+                <span class="text-danger"
+                    [hidden]="profile.controls['address'].get('state')?.valid || profile.controls['address'].get('state')?.pristine">State
+                    is required</span>
+            </div>
+            <div class="col-2">
+                City:
+                <input type="text" formControlName="city">
+                <span class="text-danger"
+                    [hidden]="profile.controls['address'].get('city')?.valid || profile.controls['address'].get('city')?.pristine">City
+                    is required</span>
+            </div>
+            <div class="col-2">
+                Pin Code:
+                <input type="number" formControlName="pin">
+                <span class="text-danger"
+                    [hidden]="profile.controls['address'].get('pin')?.valid || profile.controls['address'].get('pin')?.pristine">Pin
+                    code maximum of 6 digits</span>
+            </div>
+        </div>
+        <br>
+        <div class="col-2">
+            <input type="submit" value="Submit" [disabled]="profile.invalid">
+        </div>
+    </form>
+
+</div>

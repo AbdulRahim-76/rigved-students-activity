@@ -1,0 +1,20 @@
+<div>
+    <form [formGroup]="profile" (ngSubmit)="handleSubmit()">
+        <div>
+            Firstname <input type="text" formControlName="firstname">
+            <span [hidden]="profile.controls['firstname'].valid || profile.controls['firstname'].pristine">Firstname is
+                required</span>
+        </div>
+        <div>
+            Lastname <input type="text" formControlName="lastname">
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+    <hr>
+
+    <div>
+        Firstname Valid : {{profile.controls['firstname'].valid}}, Pristine {{profile.controls['firstname'].pristine}}
+    </div>
+</div>
