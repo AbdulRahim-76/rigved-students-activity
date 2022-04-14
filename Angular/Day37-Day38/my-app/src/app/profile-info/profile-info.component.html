@@ -1,0 +1,30 @@
+<div>
+    <h3>Profile Information</h3>
+
+    <table *ngIf="items" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Profile Id</th>
+                <th>Name</th>
+                <th>gender</th>
+                <th>phone number</th>
+                <th>email ID</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Pincode</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let profile of items">
+                <td>{{profile.profileId}}</td>
+                <td>{{profile.name}}</td>
+                <td>{{profile.gender}}</td>
+                <td>{{profile.phoneNo}}</td>
+                <td>{{profile.emailId}}</td>
+                <td>{{profile.address.state}}</td>
+                <td>{{profile.address.city}}</td>
+                <td>{{profile.address.pin}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
