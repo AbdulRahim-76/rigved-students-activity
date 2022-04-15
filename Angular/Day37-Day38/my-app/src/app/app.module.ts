@@ -8,13 +8,15 @@ import { ProfileInfoStoreComponent } from './profile-info-store/profile-info-sto
 import { ProfileInfoDeleteComponent } from './profile-info-delete/profile-info-delete.component';
 import { ProfileInfoUpdateComponent } from './profile-info-update/profile-info-update.component';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';
+import { RegisteredComponent } from './registered/registered.component';
 
 let route: Routes = [
   { path: "", component: ProfileInfoStoreComponent },
   { path: "store", component: ProfileInfoStoreComponent },
   { path: "profileInfo", component: ProfileInfoComponent },
   { path: "delete", component: ProfileInfoDeleteComponent },
-  { path: "update", component: ProfileInfoUpdateComponent }
+  { path: "update", component: ProfileInfoUpdateComponent },
+  {path : "success/:n", component : RegisteredComponent}
 ];
 
 
@@ -24,7 +26,8 @@ let route: Routes = [
     ProfileInfoStoreComponent,
     ProfileInfoDeleteComponent,
     ProfileInfoUpdateComponent,
-    ProfileInfoComponent
+    ProfileInfoComponent,
+    RegisteredComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(route)

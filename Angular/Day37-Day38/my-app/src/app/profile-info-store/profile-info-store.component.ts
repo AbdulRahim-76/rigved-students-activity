@@ -16,18 +16,20 @@ export class ProfileInfoStoreComponent implements OnInit {
   ngOnInit(): void {
   }
   profile: FormGroup = this.builder.group({
-    name: ['', Validators.required],
-    gender: ['', Validators.required],
-    phoneNo: ['', Validators.compose([Validators.maxLength(10), Validators.required, Validators.minLength(10)])],
-    emailId: ['', Validators.required],
+    profileId: [''],
+    name: ['', [Validators.required,Validators.minLength(2), Validators.maxLength(10)]],
+    gender: ['', [Validators.required]],
+    phoneNo: ['', [Validators.minLength(10),Validators.required]],
+    emailId: ['', [Validators.required]],
     address: this.builder.group({
-      state: ['', Validators.required],
-      city: ['', Validators.required],
-      pin: ['', Validators.compose([Validators.required, Validators.maxLength(6), Validators.minLength(6)])]
+      state: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      pin: ['', [Validators.required]]
     })
   });
-  saveForm() {
-    this.service.save(this.profile.value);
-    this._router.navigate(['success', this.profile.value.name])
+
+    saveForm() {
+      this.service.save(this.profile.value);
+      this._router.navigate(['success', this.profile.value.name])
+    }
   }
-}

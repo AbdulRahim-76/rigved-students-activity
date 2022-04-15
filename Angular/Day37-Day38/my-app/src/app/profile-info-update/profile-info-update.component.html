@@ -1,59 +1,58 @@
 <div class="container-fluid">
-    <h2>Update - Profile Infoformation</h2>
+    <h3>Update Profile!</h3>
     Enter Id: <input type="number" [formControl]="id">&nbsp;
-    <input type="button" (click)="getInfo()" (click)="updateProfile()" value="Get">
+    <input type="button" (click)="getInfo()" (click)="updateProfile()" value="Get" class="btn btn-success">
 
-    <form *ngIf="object" [formGroup]="profile" (ngSubmit)="updateForm()">
-        <div class="col-2">
-            Name:<input type="text" formControlName="name" class="form-control">
+    <form *ngIf="object" [formGroup]="profile" (ngSubmit)="updateForm()" class="form-control bg-primary bg-opacity-25">
+
+        <div>
+            Name : <input type="text" formControlName="name" class="form-control" />
             <span class="text-danger"
-                [hidden]="profile.controls['name'].valid || profile.controls['name'].pristine">Name is
+                [hidden]="profile.controls['name'].valid || profile.controls['name'].pristine">*Name is
                 required</span>
         </div>
-        <div class="col-2">
-            Gender:<input type="radio" name="gender" value="Male" formControlName="male">Male
-            <input type="radio" name="gender" value="Female" formControlName="female">Female
+        <div>
+            Gender :
+            <input type="radio" value="Male" formControlName="gender">Male
+            <input type="radio" value="Female" formControlName="gender">Female
             <span class="text-danger"
-                [hidden]="profile.controls['gender'].valid || profile.controls['gender'].pristine">Gender is
+                [hidden]="profile.controls['gender'].valid || profile.controls['gender'].pristine">*Gender is
                 required</span>
         </div>
-        <div class="col-2">
-            Phone No:<input type="number" formControlName="phoneNo" class="form-control">
+        <div>
+            Phone :
+            <input type="number" formControlName="phoneNo" class="form-control" />
             <span class="text-danger"
-                [hidden]="profile.controls['phoneNo'].valid || profile.controls['phoneNo'].pristine">Phone
-                number must of 10 digit</span>
+                [hidden]="profile.controls['phoneNo'].valid || profile.controls['phoneNo'].pristine">*Minimum 10
+                Character Required</span>
         </div>
-        <div class="col-2">
-            Email Id:<input type="text" formControlName="emailId" class="form-control">
+        <div>
+            Email Id :
+            <input type="email" formControlName="emailId" class="form-control" />
             <span class="text-danger"
-                [hidden]="profile.controls['emailId'].valid || profile.controls['emailId'].pristine">Email ID is
+                [hidden]="profile.controls['emailId'].valid || profile.controls['emailId'].pristine">*Email Id is
                 required</span>
-        </div>
-        <div formGroupName="address">
-            <h3>Address</h3>
-            <div class="col-2">
-                State:<input type="text" formControlName="state" name="" class="form-control">
-                <span class="text-danger"
-                    [hidden]="profile.controls['address'].get('state')?.valid || profile.controls['address'].get('state')?.pristine">State
-                    is required</span>
-            </div>
-            <div class="col-2">
-                City:<input type="text" formControlName="city" class="form-control">
-                <span class="text-danger"
-                    [hidden]="profile.controls['address'].get('city')?.valid || profile.controls['address'].get('city')?.pristine">City
-                    is required</span>
-            </div>
-            <div class="col-2">
-                Pin Code:<input type="number" formControlName="pin" class="form-control">
-                <span class="text-danger"
-                    [hidden]="profile.controls['address'].get('pin')?.valid || profile.controls['address'].get('pin')?.pristine">Pin
-                    Code must be of 6 digits</span>
-            </div>
         </div>
         <br>
-        <div class="col-2">
-            <input type="submit" value="Update">
-            <!--[disabled]="profile.invalid"-->
+        <div formGroupName="address" class="form-control">
+            address : <br>
+            <label for="state">state : <input type="text" formControlName="state" name="state"></label>
+            <span class="text-danger"
+                [hidden]="profile.controls['address'].get('state')?.valid || profile.controls['address'].get('state')?.pristine">State
+                is required</span><br>
+            <label for="city">city : <input type="text" formControlName="city" name="city"></label>
+            <span class="text-danger"
+                [hidden]="profile.controls['address'].get('city')?.valid || profile.controls['address'].get('city')?.pristine">City
+                is required</span> <br>
+
+            <label for="pin">pin : <input type="number" formControlName="pin" name="pin"></label>
+            <span class="text-danger"
+                [hidden]="profile.controls['address'].get('pin')?.valid || profile.controls['address'].get('pin')?.pristine">Pin
+                is required</span>
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Submit" [disabled]="profile.invalid">
         </div>
     </form>
 
