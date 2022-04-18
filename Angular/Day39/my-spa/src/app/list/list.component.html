@@ -1,0 +1,32 @@
+<div>
+    <h3 class="text-center">User List</h3>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th rowspan="2">User-Id</th>
+          <th rowspan="2">Name</th>
+          <th rowspan="2">Gender</th>
+          <th rowspan="2">Phone-No.</th>
+          <th rowspan="2">Email-Id</th>
+          <th colspan="3">Address</th>
+        </tr>
+        <tr>
+          <th>State</th>
+          <th>City</th>
+          <th>Pincode</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of items; let i = index">
+          <td>{{p.userId}}</td>
+          <td>{{p.name}}</td>
+          <td>{{p.gender}}</td>
+          <td>{{p.phone}}</td>
+          <td>{{p.email}}</td>
+          <td>{{p.state}}</td>
+          <td>{{p.city}}</td>
+          <td>{{p.pincode}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,25 @@
+<div>
+  <h3>Success Component</h3>
+  <div class="text-dark
+   text-center" *ngIf="username">Hello, <b>{{username}}</b> your profile is successfully registered.</div><br>
+  <div class="container">
+
+    <ul class="nav nav-pills nav-fill form-control">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="list">List Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-danger" routerLink="delete">Delete Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-success" routerLink="update">Update Profile</a>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
+  <a class="nav-link" routerLink="/store"><b>BACK</b></a>
+
+</div>
