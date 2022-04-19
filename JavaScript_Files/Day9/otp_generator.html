@@ -52,7 +52,7 @@
             document.write("OTP of " + n + " digits : " + generateOTP());
 
             function get4digit() {
-                var code = Math.round(Math.random() * 1000000);
+                var code = Math.round(Math.random() * 10000);
                 var codeStr = code + "";
 
                 if (codeStr.length == 4) {

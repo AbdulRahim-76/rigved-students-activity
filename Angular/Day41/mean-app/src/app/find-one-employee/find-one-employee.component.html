@@ -1,0 +1,26 @@
+<div>
+    <h3>Find One Employee</h3>
+    <div>
+        Id : <input type="number" [formControl]="_id">
+    </div>
+    <br>
+    <input type="submit" value="Get" (click) = "handleClick(_id.value)">
+    <div>  
+        <table *ngIf="employee" class="table table-border">
+            <thead>
+                <tr>
+                    <th>Employees Id</th>
+                    <th>Name</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of employee">
+                    <td>{{emp._id}}</td>
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.salary}}</td>   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

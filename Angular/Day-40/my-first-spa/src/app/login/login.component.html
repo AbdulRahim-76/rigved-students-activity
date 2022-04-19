@@ -1,0 +1,30 @@
+<h1 class="text-center p-4">Welcome to Anime World</h1>
+<hr>
+<div class="border border-warning bg-dark">
+    <div class="d-flex justify-content-left bg bg-warning">
+        <h3>Login</h3>
+    </div>
+    <br>
+    <h4 class="text-center">Log in to Anime World</h4>
+    <main class="d-flex justify-content-center">
+        <div class="w-25 p-2 bg alert-dark">
+            <form class="form-control form-control-lg bg bg-warning">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td> Username : <input type="text" [formControl]="username" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td> Password : <input type="password" [formControl]="password" class="form-control"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <br>
+                <div>
+                    <input type="submit" value="Login" (click)="handleLogin()">
+                </div>
+            </form>
+        </div>
+    </main>
+</div>

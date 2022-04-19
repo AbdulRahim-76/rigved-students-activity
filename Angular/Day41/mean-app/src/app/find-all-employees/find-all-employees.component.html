@@ -1,0 +1,22 @@
+<div>
+    <h3>Find All Employees</h3>
+    <button (click) = "handleClick()">Refresh</button>
+    <div>  
+        <table *ngIf="employees" class="table table-border">
+            <thead>
+                <tr>
+                    <th>Employees Id</th>
+                    <th>Name</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of employees">
+                    <td>{{emp._id}}</td>
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.salary}}</td>   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
