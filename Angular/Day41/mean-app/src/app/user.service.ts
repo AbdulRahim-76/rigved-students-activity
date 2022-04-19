@@ -6,28 +6,28 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
- 
-  baseUrl : string ="http://localhost:3001/employees/:id";
+
+  baseUrl: string = "http://localhost:3001/employees";
   constructor(private _http: HttpClient) { }
 
-  public getEmployees() : Observable<any> {
+  public getEmployees(): Observable<any> {
     return this._http.get(this.baseUrl);
   }
 
-  public storeEmployee(formValue: any) : Observable<any> {
+  public storeEmployee(formValue: any): Observable<any> {
     return this._http.post(this.baseUrl, formValue);
   }
 
-  public getEmp(id:any):Observable<any>{
-    return this._http.get(this.baseUrl+'/'+id)
+  public getEmp(id: any): Observable<any> {
+    return this._http.get(this.baseUrl + '/' + id)
   }
 
-  public deleteEmployee(id:any):Observable<any>{
-    return this._http.delete(this.baseUrl+'/'+id)
+  public deleteEmployee(id: any): Observable<any> {
+    return this._http.delete(this.baseUrl + '/' + id)
   }
 
-  public updateEmployee(id:any,age:any,data:any):Observable<any>{
-    return this._http.put(this.baseUrl+'/'+id+'/'+age,data)
+  public updateEmployee(id: any, salary: any, data: any): Observable<any> {
+    return this._http.put(this.baseUrl + '/' + id + '/' + salary, data)
   }
 
 

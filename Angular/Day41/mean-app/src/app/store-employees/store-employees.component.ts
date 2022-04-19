@@ -15,16 +15,14 @@ export class StoreEmployeesComponent implements OnInit {
   }
   //success response on store
   info: any | undefined = undefined;
-  // error: any | undefined =undefined;
 
-  
   empForm: FormGroup = this._builder.group({
-    _id:[], name:[], salary:[]
+    _id: [], name: [], salary: []
   });
 
-  handleSubmit(){
-    this._service.storeEmployee(this.empForm.value).subscribe((data)=>{
-      this.info =data ;
+  handleSubmit() {
+    this._service.storeEmployee(this.empForm.value).subscribe((data) => {
+      this.info = data;
     }
     );
   }

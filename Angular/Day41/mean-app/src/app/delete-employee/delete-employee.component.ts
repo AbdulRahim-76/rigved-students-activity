@@ -15,14 +15,14 @@ export class DeleteEmployeeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  employee: any | undefined=undefined
+  employees: any | undefined = undefined
 
-  _id=new FormControl('');
+  _id = new FormControl('');
 
-  handleClick(id:number){
-    
-    this._service.deleteEmployee(id).subscribe((data)=>{
-      this.employee=data;
+  handleClick(id: number) {
+
+    this._service.deleteEmployee(id).subscribe((data) => {
+      this.employees = data;
     })
   }
 

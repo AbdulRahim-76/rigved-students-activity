@@ -1,1 +1,16 @@
-<p>update-employee works!</p>
+<div class="container-fluid">
+    <h2>Update Employee</h2>
+    <div class="form-control">
+        Id: <input type="number" [formControl]="id">
+    </div>
+    <br>
+    <div class="form-control">
+        salary: <input type="number" [formControl]="salary">
+    </div><br>
+    <div>
+        <input type="submit" value="Update" (click)="handleUpdate()">
+    </div>
+    <div>
+        <p *ngIf="employees">{{employees | json}}</p>
+    </div>
+</div>

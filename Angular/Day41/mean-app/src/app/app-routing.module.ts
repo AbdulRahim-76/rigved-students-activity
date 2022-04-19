@@ -7,16 +7,16 @@ import { StoreEmployeesComponent } from './store-employees/store-employees.compo
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 
 const routes: Routes = [
-  {path:"", component: StoreEmployeesComponent},
-  {path:"store", component: StoreEmployeesComponent},
-  {path:"findAll", component: FindAllEmployeesComponent},
-  {path:"findEmployee", component: FindOneEmployeeComponent},
-  {path:"delete", component: DeleteEmployeeComponent},
-  {path:"update", component: UpdateEmployeeComponent},
+  { path: "", component: StoreEmployeesComponent },
+  { path: "store", component: StoreEmployeesComponent },
+  { path: "findAll", component: FindAllEmployeesComponent },
+  { path: "findEmployee", component: FindOneEmployeeComponent },
+  { path: "delete", component: DeleteEmployeeComponent },
+  { path: "update", component: UpdateEmployeeComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

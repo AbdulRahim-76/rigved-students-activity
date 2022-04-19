@@ -1,26 +1,27 @@
 <h3>Employee Form</h3>
-<form [formGroup]="empForm" (ngSubmit)="handleSubmit()">
+<div class="form-control">
+    <form [formGroup]="empForm" (ngSubmit)="handleSubmit()">
+        <div>
+            <label>
+                Id <input type="number" formControlName="_id">
+            </label>
+        </div>
+        <div>
+            <label>
+                Name <input type="text" formControlName="name">
+            </label>
+        </div>
+        <div>
+            <label>
+                Salary <input type="number" formControlName="salary">
+            </label>
+        </div>
+        <div>
+            <input type="submit" value="Register">
+        </div>
+    </form>
     <div>
-        <label>
-            Id <input type="text" formControlName="_id">
-        </label>
-    </div>
-    <div>
-        <label>
-            Name <input type="text" formControlName="name">
-        </label>
-    </div>
-    <div>
-        <label>
-            Salary <input type="text" formControlName="salary">
-        </label>
-    </div>
-    <div>
-        <input type="submit" value="Register">
-    </div>
-    <div>
-        <p *ngIf="info">Info : {{info | json}}</p>
+        Info : <p *ngIf="info">{{info | json}}</p>
         <p *ngIf="info">Inserted Id: {{info.insertedId}}</p>
-        <!-- <p *ngIf="error">Error: {{error | json}}</p> -->
     </div>
-</form>
+</div>

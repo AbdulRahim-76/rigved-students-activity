@@ -8,14 +8,14 @@ import { UserService } from '../user.service';
 })
 export class FindAllEmployeesComponent implements OnInit {
 
-  employees : any[] | undefined = undefined ;
+  employees: any[] | undefined = undefined;
   constructor(private _service: UserService) { }
 
   ngOnInit(): void {
   }
 
-  handleClick() : void {
-    this._service.getEmployees().subscribe((data)=>{
+  handleClick(): void {
+    this._service.getEmployees().subscribe((data) => {
       this.employees = data;
     });
   }

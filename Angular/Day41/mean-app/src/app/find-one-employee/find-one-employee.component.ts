@@ -16,10 +16,10 @@ export class FindOneEmployeeComponent implements OnInit {
 
   employee: any | undefined = undefined;
 
-  _id= new FormControl('');
+  _id = new FormControl('');
 
-  handleClick(id: number) : void {
-    this._service.getEmp(id).subscribe((data)=>{
+  handleClick(id: number): void {
+    this._service.getEmp(id).subscribe((data) => {
       this.employee = data;
     });
   }

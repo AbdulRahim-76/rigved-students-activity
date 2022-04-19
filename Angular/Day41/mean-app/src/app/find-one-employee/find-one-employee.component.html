@@ -1,12 +1,12 @@
 <div>
-    <h3>Find One Employee</h3>
+    <h3>Find Employee</h3>
     <div>
-        Id : <input type="number" [formControl]="_id">
+        Id : <input type="number" [formControl]="_id" class="form-control">
     </div>
     <br>
-    <input type="submit" value="Get" (click) = "handleClick(_id.value)">
-    <div>  
-        <table *ngIf="employee" class="table table-border">
+    <input type="submit" value="Get" (click)="handleClick(_id.value)">
+    <div>
+        <table class="table table-border">
             <thead>
                 <tr>
                     <th>Employees Id</th>
@@ -15,10 +15,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let emp of employee">
-                    <td>{{emp._id}}</td>
-                    <td>{{emp.name}}</td>
-                    <td>{{emp.salary}}</td>   
+                <tr *ngIf="employee" style="text-align: center;">
+                    <td>{{employee._id}}</td>
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.salary}}</td>
                 </tr>
             </tbody>
         </table>
